@@ -58,7 +58,9 @@ public class PanelQLSV extends JPanel{
          * ADD TO TABLE
          */
         for (int i = 0; i < sv.size(); i++) {
-               tableModel.addRow(new Object[]{sv.get(i).getHoLot(),sv.get(i).getTen(),sv.get(i).getMssv(),sv.get(i).getNgaysinh()
+               tableModel.addRow(new Object[]{
+                sv.get(i).getHoLot(),sv.get(i).getTen()
+               ,sv.get(i).getMssv(),sv.get(i).getNgaysinh()
                ,sv.get(i).getDiachi(),sv.get(i).getSdt()});
         }
       }
@@ -67,9 +69,15 @@ public class PanelQLSV extends JPanel{
         btnadd.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                   tableModel.addRow(new Object[]{tableModeladd.getValueAt(0, 0),tableModeladd.getValueAt(0, 1)
-                    ,tableModeladd.getValueAt(0, 2),tableModeladd.getValueAt(0, 3),tableModeladd.getValueAt(0, 4),
-                    tableModeladd.getValueAt(0, 5)});
+                   btnadd.setFocusable(true);
+                   tableModel.addRow(new Object[]{
+                     tableModeladd.getValueAt(0, 0)
+                    ,tableModeladd.getValueAt(0, 1)
+                    ,tableModeladd.getValueAt(0, 2)
+                    ,tableModeladd.getValueAt(0, 3)
+                    ,tableModeladd.getValueAt(0, 4)
+                    ,tableModeladd.getValueAt(0, 5)
+                   });
               
              }
 
