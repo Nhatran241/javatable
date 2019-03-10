@@ -7,9 +7,15 @@ package javaapplication17;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -19,7 +25,10 @@ import javax.swing.table.DefaultTableModel;
 public class PanelQLSV extends JPanel{
     private ArrayList<SinhVien> sv;
     private JTable tablesv;
+    private JTable tabbleadd;
+    private JButton btnadd;
     private DefaultTableModel tableModel;
+    private DefaultTableModel tableModeladd;
     public PanelQLSV (){
         initData();
         initEvent();
@@ -31,6 +40,10 @@ public class PanelQLSV extends JPanel{
         String col[] = {"HoLot","Ten","MSSV", "NgaySinh","DiaChi","Sdt"};
         tableModel= new DefaultTableModel(col, 0);
         tablesv=new JTable(tableModel);
+        tableModeladd= new DefaultTableModel(col, 0);
+        tableModeladd.addRow(new Object[]{"","","","","",""});
+        tabbleadd=new JTable(tableModeladd);
+        btnadd = new JButton("ADD");
         /**
          * SINH VIEN ARRAYLIST
          */
@@ -51,12 +64,39 @@ public class PanelQLSV extends JPanel{
       }
 
     private void initEvent() {
+        btnadd.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                   tableModel.addRow(new Object[]{tableModeladd.getValueAt(0, 0),tableModeladd.getValueAt(0, 1)
+                    ,tableModeladd.getValueAt(0, 2),tableModeladd.getValueAt(0, 3),tableModeladd.getValueAt(0, 4),
+                    tableModeladd.getValueAt(0, 5)});
+              
+             }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+             }
+        });
     }
 
     private void initUI() {
         setBackground(Color.red);
-        setLayout(new GridLayout(1, 1));
+        setLayout(new GridLayout(3, 1));
         add(tablesv);
+        add(tabbleadd);
+        add(btnadd);
     }
    
 }
